@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
   },
   header: {
     flexDirection: 'row',
@@ -18,7 +19,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   form: {
-    paddingHorizontal: 20,
     paddingBottom: 20,
   },
   input: {
@@ -33,19 +33,6 @@ const styles = StyleSheet.create({
   placeholderText: {
     flex: 1,
     color: '#999',
-  },
-  submitButton: {
-    backgroundColor: '#FAEDED',
-    paddingVertical: 14,
-    marginHorizontal: 20,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  submitButtonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: 'black',
   },
 });
 

@@ -2,15 +2,26 @@ import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 import ButtonSolid from '../../components/atomics/buttons/ButtonSolid.atomic';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigations/RootStackParamList';
 import RouteName from '../../constants/Route.constant';
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
+type HomeScreenRouteProp = RouteProp<RootStackParamList, 'HomeScreen'>;
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProps>();
+  const route = useRoute<HomeScreenRouteProp>();
+  const { room, startTime, endTime } = route.params || {};
+
+  const scheduleList = [
+    ...(room && startTime && endTime
+      ? [{ time: `${startTime} - ${endTime}`, room }]
+      : []),
+    { time: '08:00 - 09:00', room: 'Squats Room' },
+    { time: '10:00 - 12:00', room: 'Lunges Room' },
+  ];
 
   return (
     <View
@@ -52,10 +63,7 @@ const HomeScreen: React.FC = () => {
 
         {/* JADWAL */}
         <View style={{ gap: 10 }}>
-          {[
-            { time: '08:00 - 09:00', room: 'Squats Room' },
-            { time: '10:00 - 12:00', room: 'Lunges Room' },
-          ].map((item, index) => (
+          {scheduleList.map((item, index) => (
             <View
               key={index}
               style={{

@@ -16,6 +16,7 @@ import ModalDivisionsPicker from '../../components/molecules/modals/ModalDivisiP
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigations/RootStackParamList';
 import { useNavigation } from '@react-navigation/native';
+import ButtonSolid from '../../components/atomics/buttons/ButtonSolid.atomic';
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
 const BookingRuangMeetingScreen = () => {
@@ -53,7 +54,11 @@ const BookingRuangMeetingScreen = () => {
       );
       return;
     } else {
-      navigation.goBack();
+      navigation.navigate('HomeScreen', {
+        room,
+        startTime,
+        endTime,
+      });
       ToastAndroid.show('Success.', ToastAndroid.SHORT);
     }
   };
@@ -105,12 +110,12 @@ const BookingRuangMeetingScreen = () => {
       </ScrollView>
 
       {/* Submit Button */}
-      <TouchableOpacity
-        style={styles.submitButton}
+
+      <ButtonSolid
+        title={'Submit'}
         onPress={() => handleSubmit()}
-      >
-        <Text style={styles.submitButtonText}>Submit</Text>
-      </TouchableOpacity>
+        borderRadius={10}
+      />
 
       <ModalRoomPicker
         visible={roomModalVisible}

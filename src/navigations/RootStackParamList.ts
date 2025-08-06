@@ -1,7 +1,13 @@
 export type RootStackParamList = {
   WelcomeScreen: undefined;
   LoginScreen: undefined;
-  HomeScreen: undefined;
+  HomeScreen:
+    | {
+        room: string;
+        startTime: string;
+        endTime: string;
+      }
+    | undefined;
   RoomBookingScreen: undefined;
   ScheduleMeetingScreen: undefined;
   // DetailOrderScreen: { orderId: string };
